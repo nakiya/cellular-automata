@@ -29,6 +29,12 @@
             (conj! ng cell)))))
     (persistent! ng)))
 
+(def r-pentomino #{[0 0] [1 0] [0 1] [-1 1] [0 2]})
+(def diehard #{[1 2] [2 2] [2 3] [6 3] [7 1] [7 3] [8 3]})
+(def acorn #{[1 3] [2 1] [2 3] [4 2] [5 3] [6 3] [7 3]})
+
+;; (nth (iterate next-gen r-pentomino) 50)
+
 ;; Below are drawing functions
 
 (def cell-size 4)
@@ -39,10 +45,6 @@
   (->> pattern
        (map (fn [[x y]] [(+ (quot grid-width 2) x) (+ (quot grid-height 2) y)]))
        (into #{})))
-
-(def r-pentomino [[0 0] [1 0] [0 1] [-1 1] [0 2]])
-(def diehard [[1 2] [2 2] [2 3] [6 3] [7 1] [7 3] [8 3]])
-(def acorn [[1 3] [2 1] [2 3] [4 2] [5 3] [6 3] [7 3]])
 
 ;; (def world (atom (center-pattern r-pentomino)))
 ;; (def world (atom (center-pattern diehard)))
